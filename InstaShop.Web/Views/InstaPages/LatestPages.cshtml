@@ -1,0 +1,39 @@
+﻿@model IEnumerable<InstaShop.DataLayer.Models.Page>
+
+<section class="fashion-area section-gap" id="fashion" dir="rtl">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">آخرین صفحات</h1>
+                    <p>
+                        همواره در تلاش هستیم تا جدیدترین و بهترین صفحات فروشگاهی اینستاگرامی را به شما معرفی کنیم.
+                        <br />
+                        در این بخش، می‌توانید با آخرین صفحاتی که به سایت ما اضافه شده‌اند، آشنا شوید.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-lg-3 col-md-6 single-fashion">
+                    <a href="/Page/@item.PageID">
+                        <img class="img-fluid" src="/ProfileImage/@item.ProfileImage" alt="@item.Username">
+                        <h4 class="mt-2">@item.Name</h4>
+                        @*<p class="text-muted">
+                            @Html.Raw(item.Bio.Length > 70 ? item.Bio.Substring(0, 70) + "..." : item.Bio)
+                        </p>*@
+                        <div class="meta-bottom d-flex justify-content-between">
+                            <p><span class="lnr lnr-list"></span> @item.PageGroup.GroupTitle</p>
+                            <p><span class="lnr lnr-eye"></span> @item.Visit</p>
+                        </div>
+                    </a>
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
+

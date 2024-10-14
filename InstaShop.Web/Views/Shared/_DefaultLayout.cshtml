@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="/Content/img/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="colorlib">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>اینستا شاپ</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
+    <link rel="stylesheet" href="/Content/css/linearicons.css">
+    <link rel="stylesheet" href="/Content/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Content/css/bootstrap.css">
+    <link rel="stylesheet" href="/Content/css/owl.carousel.css">
+    <link rel="stylesheet" href="/Content/css/main.css">
+
+    <style>
+        /*  .dropdown-menu {
+            display: none;
+        }*/
+    </style>
+    @RenderSection("Styles", required: false)
+
+</head>
+<body>
+
+    <!-- Start Header Area -->
+    <header class="default-header" dir="rtl">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="~/Content/img/mylogo.png" alt="لوگو اینستا شاپ" style="width:100px">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse align-items-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li><a href="/">صفحه اصلی</a></li>
+                        <li><a href="/AddMyPage">افزودن صفحه من</a></li>
+                        <li><a href="/Archive/Page/1">آرشیو صفحات</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                دسته بندی ها
+                            </a>
+                            <div class="dropdown-menu">
+                                @Html.Action("ShowGroupsInMenu", "InstaPages")
+                            </div>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a style="color:#000000">@User.Identity.Name خوش آمدید.</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                    ادمین
+                                    @Html.Action("GetNewCommentsCount", "Notification")
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="/Admin/PageGroups" class="dropdown-item">مدیریت گروه ها</a>
+                                    <a href="/Admin/Pages" class="dropdown-item">مدیریت صفحات</a>
+                                    <a href="/Admin/AdminLogins" class="dropdown-item">مدیریت ادمین ها</a>
+                                    <a href="/Admin/PageComments" class="dropdown-item">
+                                        مدیریت نظرات
+                                        @Html.Action("GetNewCommentsCount", "Notification")                                    </a>
+                                </div>
+                            </li>
+                            <li><a href="/Account/SignOut">خروج</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="/Account/Login">ورود به سایت</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End Header Area -->
+    @RenderBody()
+    <!-- start footer Area -->
+    <footer class="footer-area section-gap" dir="rtl">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3  col-md-12">
+                    <div class="single-footer-widget">
+                        <h6>دسترسی سریع</h6>
+                        <ul class="footer-nav">
+                            <li><a href="/">صفحه اصلی</a></li>
+                            <li><a href="/AddMyPage">افزودن صفحه من</a></li>
+                            <li><a href="/Archive/Page/1">آرشیو صفحات</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a href="/Account/SignOut">خروج از سایت </a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/Account/Login">ورود به سایت </a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6  col-md-12">
+                    <div class="footer-categories">
+                        <h6>دسته بندی ها</h6>
+                        <ul class="footer-navbar">
+                            @Html.Action("ShowGroupsInFooter", "InstaPages")
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3  col-md-12">
+                    <div class="single-footer-widget mail-chimp mt-5 text-center">
+                        @*<h6 class="mb-20">اینستگرام ما</h6>
+                            <ul class="instafeed d-flex flex-wrap">
+                                <li><img src="/Content/img/i1.jpg" alt=""></li>
+                                <li><img src="/Content/img/i2.jpg" alt=""></li>
+                                <li><img src="/Content/img/i3.jpg" alt=""></li>
+                                <li><img src="/Content/img/i4.jpg" alt=""></li>
+                                <li><img src="/Content/img/i5.jpg" alt=""></li>
+                                <li><img src="/Content/img/i6.jpg" alt=""></li>
+                                <li><img src="/Content/img/i7.jpg" alt=""></li>
+                                <li><img src="/Content/img/i8.jpg" alt=""></li>
+                            </ul>*@
+
+                        <img src="https://karahost.com/wp-content/uploads/2021/03/Untitled-31-1.png" width="150px" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row footer-bottom d-flex justify-content-between">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <p class="col-lg-12 col-sm-12 footer-text text-white">
+                    با توجه به رشد روزافزون فروش آنلاین و اهمیت حضور در شبکه‌های اجتماعی، این سایت به شما کمک می‌کند تا
+                    به راحتی به برترین پیج‌های فروشگاهی دسترسی پیدا کنید و از محصولات و خدمات متنوع آن‌ها بهره‌مند شوید.
+                    هر روزه سعی می‌کنیم جدیدترین و معتبرترین پیج‌ها را معرفی کنیم تا شما بتوانید با اطمینان خاطر خرید کنید.
+                </p>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                @*<div class="col-lg-4 col-sm-12 footer-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </div>*@
+            </div>
+        </div>
+    </footer>
+    <!-- End footer Area -->
+
+    <script src="/Content/js/vendor/jquery-2.2.4.min.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/popper./Content/js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>*@
+    <script src="/Content/js/vendor/bootstrap.min.js"></script>
+    <script src="/Content/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/Content/js/parallax.min.js"></script>
+    <script src="/Content/js/owl.carousel.min.js"></script>
+    <script src="/Content/js/jquery.magnific-popup.min.js"></script>
+    <script src="/Content/js/jquery.sticky.js"></script>
+    <script src="/Content/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(document).ready(function () {
+            // بستن تمام زیرمنوها در زمان بارگذاری اولیه صفحه
+            $(".dropdown-menu").hide();
+
+            $(".dropdown-toggle").on("click", function (event) {
+                event.preventDefault(); // جلوگیری از عملکرد پیش‌فرض
+
+                var $dropdownMenu = $(this).next(".dropdown-menu");
+
+                // بررسی باز یا بسته بودن زیرمنو و تغییر نمایش آن
+                if ($dropdownMenu.is(":visible")) {
+                    $dropdownMenu.slideUp();
+                } else {
+                    // بستن دیگر زیرمنوها در صورت نیاز
+                    $(".dropdown-menu").slideUp();
+                    $dropdownMenu.slideDown();
+                }
+            });
+
+            // بستن زیرمنوها با کلیک بیرون از آنها
+            $(document).on("click", function (event) {
+                if (!$(event.target).closest(".dropdown").length) {
+                    $(".dropdown-menu").slideUp();
+                }
+            });
+        });
+    </script>
+
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
+

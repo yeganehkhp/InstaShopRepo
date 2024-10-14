@@ -1,0 +1,70 @@
+﻿@model IEnumerable<InstaShop.DataLayer.Models.Page>
+
+@{
+    ViewBag.Title = "مدیریت صفحات";
+}
+
+<h2>مدیریت صفحات</h2>
+
+<p>
+    @Html.ActionLink("افزودن صفحه جدید", "Create", "Pages", new { area = "Admin" }, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr class="bg-primary text-white">
+        <th>
+            @Html.DisplayNameFor(model => model.ProfileImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PageGroup.GroupTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShowInSlider)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="/ProfileImage/@item.ProfileImage" class="thumbnail" style="max-width:120px; max-height:120px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PageGroup.GroupTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                <a href="/Page/@item.PageID" target="_blank">@item.Name</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowInSlider)
+            </td>
+            <td>
+                @item.CreateDate.ToShamsiDateTime()
+            </td>
+            <td>
+                <a class="btn btn-warning btn-sm" href="/Admin/Pages/Edit/@item.PageID">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+                <a class="btn btn-danger btn-sm" href="@Url.Action("Delete",new {id=item.PageID})">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+                <a class="btn btn-info btn-sm" href="/Admin/Pages/Details/@item.PageID">
+                    <i class="glyphicon glyphicon-open"></i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

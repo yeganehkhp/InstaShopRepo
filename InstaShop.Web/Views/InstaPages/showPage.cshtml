@@ -1,0 +1,146 @@
+﻿@model InstaShop.DataLayer.Models.Page
+
+@{
+    ViewBag.Title = "showPage";
+}
+
+@section Styles
+    {
+    <link rel="stylesheet" href="/Content/css/bootstrap-rtl.css">
+}
+
+<div class="post-wrapper pt-100">
+    <!-- Start post Area -->
+    <section class="post-area">
+        <div class="container">
+            <div class="mb-50">
+                <h5>دسته بندی / <a style="color:#000000" href="/Group/@Model.GroupID/@Model.PageGroup.GroupTitle/Page/1">@Model.PageGroup.GroupTitle</a> / @Model.Name</h5>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="single-page-post">
+                        <div class="single-list flex-row d-flex">
+                            <img src="~/ProfileImage/@Model.ProfileImage" alt="@Model.Name" style="width:200px" class="thumbnail">
+                            <div class="detail mr-30 flex">
+                                <div style="height:fit-content; margin:auto">
+                                    <h4 class="pb-20">
+                                        @Model.Name
+                                    </h4>
+                                    <p>
+                                        <strong>آدرس صفحه : </strong><a href="https://www.instagram.com/@Model.Username" target="_blank">@Model.Username</a>
+                                    </p>
+                                    <p class="footer pt-2">
+                                        <i class="ml-1 fa fa-list"></i>
+                                        <a>@Model.PageGroup.GroupTitle</a>
+
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                        <a>@Model.Visit </a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        @*<div class="top-wrapper ">
+                                <div class="row d-flex justify-content-between">
+                                    <h2 class="col-lg-8 col-md-12 text-uppercase">
+                                        @Model.Name
+                                    </h2>
+                                    <div class="text-right">
+                                        آدرس صفحه : <a href="https://www.instagram.com/@Model.Username" target="_blank">@Model.Username</a>
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 right-side d-flex justify-content-end">
+                                        <div class="desc">
+                                            <h2>نویسنده : ادمین </h2>
+                                            <h3>تاریخ : 1399/06/26</h3>
+                                        </div>
+                                        <div class="user-img">
+                                            <img src="img/user.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <div class="tags">
+                            <ul>
+                                @foreach (var item in Model.Tags.Split(','))
+                                {
+                                    <li><a href="/Search?q=@item">@item</a></li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="single-post-content">
+                            <blockquote>
+                                @Html.Raw(Model.Bio)
+                            </blockquote>
+                            <div style="width:100%">
+                                @Html.Raw(Model.Description)
+                            </div>
+                        </div>
+                        @*<div class="bottom-wrapper">
+                                <div class="row">
+                                    <div class="col-lg-4 single-b-wrap col-md-12">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                            @Model.Visit
+                                        </div>
+
+                                    <div class="col-lg-4 single-b-wrap col-md-12">
+                                            <ul class="social-icons">
+                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                </div>
+                            </div>*@
+                        <br />
+                        @Html.Action("ShowComments")
+                        <!-- Start commentform Area -->
+                       
+                            <section class="commentform-area  pb-120 pt-80 mb-20">
+                                <div class="container">
+                                    <h5 class="text-uppercas pb-50">شما هم دیدگاه خود را ارسال کنید</h5>
+                                    <div class="row flex-row d-flex">
+                                        <div class="col-lg-6">
+                                            <input name="name" placeholder="نام خود را وارد کنید" onfocus="this.placeholder = ''" onblur="this.placeholder = 'نام خود را وارد کنید'" class="common-input mb-20 form-control" required="" type="text" id="txtName">
+                                            <input name="email" placeholder="ایمیل خود را وارد کنید" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ایمیل خود را وارد کنید'" class="common-input mb-20 form-control" required="" type="email" id="txtEmail">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <textarea class="form-control mb-10" name="message" placeholder="متن نظر" onfocus="this.placeholder = ''" onblur="this.placeholder = 'متن نظر'" required="" id="txtComment"></textarea>
+                                        </div>
+                                        <button class="primary-btn mt-20 text-white" onclick="addComment()">ارسال نظر</button>
+                                    </div>
+                                </div>
+                            </section>
+                      
+                        <!-- End commentform Area -->
+                    </div>
+                </div>
+                <div class="col-lg-4 sidebar-area">
+                    @Html.Action("Search", "InstaPages")
+                    @Html.Action("TopVisitPage", "InstaPages")
+                    @Html.Action("ShowGroups", "InstaPages")
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End post Area -->
+</div>
+
+<script>
+    function addComment() {
+        $.ajax({
+            url: "/InstaPages/AddComment/" + @Model.PageID,
+            type: "Get",
+            data: { name: $("#txtName").val(), email: $("#txtEmail").val(), comment: $("#txtComment").val() }
+        }).done(function(result) {
+
+            $("#commentList").html(result);
+            $("#txtName").val("");
+            $("#txtEmail").val("");
+            $("#txtComment").val("");
+
+        });
+    }
+</script>
+
+

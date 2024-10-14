@@ -1,0 +1,19 @@
+﻿@model IEnumerable<InstaShop.DataLayer.Models.Page>
+
+<section class="category-area section-gap" id="news">
+    <div class="container">
+        <div class="active-cat-carusel">
+            @foreach (var item in Model)
+            {
+                <a href="/page/@item.PageID">
+                    <div class="item single-cat">
+                        <img dir="rtl" src="~/ProfileImage/@item.ProfileImage" alt="@item.Username">
+                        <h4 dir="rtl" class="mt-2">@item.Name</h4>
+                        <span class="text-muted text-right mt-3 float-right">@item.PageGroup.GroupTitle</span>
+                        <span class="float-left mt-3 text-muted"><i class="fa fa-eye text-muted" aria-hidden="true"></i> @item.Visit</span>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+</section>

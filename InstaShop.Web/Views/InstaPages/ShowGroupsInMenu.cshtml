@@ -1,0 +1,6 @@
+﻿@model IEnumerable<InstaShop.DataLayer.Models.PageGroup>
+
+@foreach (var item in Model)
+{
+    <a class="dropdown-item" href="/Group/@item.GroupID/@item.GroupTitle/Page/1">@item.GroupTitle</a>
+}

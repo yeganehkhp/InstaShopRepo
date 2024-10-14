@@ -1,0 +1,109 @@
+﻿@model InstaShop.DataLayer.Models.Page
+
+@{
+    ViewBag.Title = "جزئیات صفحه";
+}
+
+<h2>جزئیات صفحه</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PageGroup.GroupTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PageGroup.GroupTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            <a href="https://www.instagram.com/@Model.Username" target="_blank">@Model.Username</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            <a href="/Page/@Model.PageID" target="_blank">@Model.Name</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfileImage)
+        </dt>
+
+        <dd>
+            <img src="/ProfileImage/@Model.ProfileImage" class="thumbnail" style="max-width:120px; max-height:120px" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bio)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Bio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowInSlider)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowInSlider)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Visit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Visit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tags)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tags)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Model.CreateDate.ToShamsiDateTime()
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a class="btn btn-warning btn-sm" href="/Admin/Pages/Edit/@Model.PageID">
+        <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-default btn-sm" href="/Admin/Pages">
+        <i class="glyphicon glyphicon-backward"></i>
+    </a>
+</p>

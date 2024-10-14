@@ -1,0 +1,77 @@
+﻿@model InstaShop.DataLayer.Models.PageComment
+
+@{
+    ViewBag.Title = "جزئیات نظر";
+}
+
+<h2>جزئیات نظر</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Page.PageGroup.GroupTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Page.PageGroup.GroupTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Page.Name)
+        </dt>
+
+        <dd>
+            <a href="/Page/@Model.PageID" target="_blank">@Model.Page.Name</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowInPage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowInPage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Model.CreateDate.ToShamsiDateTime()
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a class="btn btn-warning btn-sm" href="/Admin/PageComments/Edit/@Model.CommentID">
+        <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-default btn-sm" href="/Admin/PageComments">
+        <i class="glyphicon glyphicon-backward"></i>
+    </a>
+</p>

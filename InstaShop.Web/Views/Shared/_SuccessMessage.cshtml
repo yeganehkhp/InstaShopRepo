@@ -1,0 +1,34 @@
+﻿<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+             Modal header 
+            <div class="modal-header">
+                <h4 class="modal-title">پیغام</h4>
+            </div>
+
+             Modal body 
+            <div class="modal-body">
+                <p>@ViewBag.Message</p>
+            </div>
+
+             Modal footer 
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#myModal").modal("show");
+    });
+</script>
+
+@*<script>
+    Swal.fire({
+        title: @ViewBag.Message,
+        icon: "success",
+        confirmButtonText: "باشه"
+    });
+</script>*@

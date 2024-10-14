@@ -1,0 +1,69 @@
+﻿@model IEnumerable<InstaShop.DataLayer.Models.PageComment>
+
+@{
+    ViewBag.Title = "نظرات";
+}
+
+<h2>نظرات</h2>
+
+<p>
+    @Html.ActionLink("افزودن نظر جدید", "Create", "PageComments", new { area = "Admin" }, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr class="bg-primary text-white">
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Page.PageGroup.GroupTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Page.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShowInPage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @item.CreateDate.ToShamsiDateTime()
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Page.PageGroup.GroupTitle)
+        </td>
+        <td>
+            <a href="/Page/@item.PageID" target="_blank">@item.Page.Name</a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShowInPage)
+        </td>
+        <td>
+            <a class="btn btn-warning btn-sm" href="/Admin/PageComments/Edit/@item.CommentID">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a class="btn btn-danger btn-sm" href="@Url.Action("Delete",new {id=item.CommentID})">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
+            <a class="btn btn-info btn-sm" href="/Admin/PageComments/Details/@item.CommentID">
+                <i class="glyphicon glyphicon-open"></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>

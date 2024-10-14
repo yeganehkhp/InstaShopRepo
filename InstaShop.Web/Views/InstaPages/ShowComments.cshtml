@@ -1,0 +1,50 @@
+﻿@using System.Threading
+@model IEnumerable<InstaShop.DataLayer.Models.PageComment>
+
+
+<section class="comment-sec-area pt-80" id="commentList" style="border:none !important; padding-bottom:0">
+    <div class="container">
+        <div class="row flex-column">
+            <p style="background-color: #f9f9ff; padding:1rem" class="mb-5">
+                <span class="h3 text-uppercase">نظرات</span>
+                <span style="float:left">
+                    <span>@Model.Count(c => c.ShowInPage == true)</span>
+                    <i class="fa fa-comment-o"></i>
+                </span>
+            </p>
+            @foreach (var item in Model)
+            {
+                <div class="comment-list">
+                    <div class="single-comment">
+                        <div class="user">
+                            @*<div class="thumb">
+                                    <img src="img/asset/c1.jpg" alt="">
+                                </div>*@
+                            <div class="desc">
+                                <h5><a href="#">@item.Name</a><span style="float:left">@item.CreateDate.ToShamsi()</span></h5>
+                                <p class="text-muted">@item.Email </p>
+                                <p class="comment">
+                                    @item.Comment
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+@if (!string.IsNullOrEmpty(ViewBag.CommentSuccessMessage))
+{
+    <script>
+        Swal.fire({
+            title: "ثبت شد",
+            icon: "success",
+            confirmButtonText: "باشه",
+            text: '@ViewBag.CommentSuccessMessage'
+        });
+    </script>
+}

@@ -1,0 +1,78 @@
+﻿@model List<InstaShop.DataLayer.Models.Page>
+
+<section class="travel-area section-gap" id="travel" dir="rtl">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">پربازدیدترین صفحات</h1>
+                    <p>
+                        به دنبال بهترین صفحات فروشگاهی اینستاگرامی با بیشترین بازدید هستید؟
+                        <br />
+                        در این بخش می‌توانید با محبوب‌ترین صفحات آشنا شوید که توانسته‌اند توجه هزاران کاربر را به خود جلب کنند.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 travel-left">
+                <a href="/page/@Model[0].PageID">
+                    <div class="single-travel media pb-70">
+                        <img class="img-fluid d-flex  mr-3" src="~/ProfileImage/@Model[0].ProfileImage" alt="@Model[0].Name" style="width:150px">
+                        <div class="media-body align-self-center mr-2">
+                            <h4 class="mt-0">@Model[0].Name</h4>
+                            @*<p class="text-muted">
+                                @Html.Raw(Model[0].Bio.Length > 70 ? Model[0].Bio.Substring(0, 70) + "..." : Model[0].Bio)
+                            </p>*@
+                            <span class="text-muted text-right mt-1 float-right">@Model[0].PageGroup.GroupTitle</span>
+                            <span class="float-left mt-1 text-muted"><i class="fa fa-eye text-muted" aria-hidden="true"></i> @Model[0].Visit</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/page/@Model[1].PageID">
+                    <div class="single-travel media">
+                        <img class="img-fluid d-flex  mr-3" src="~/ProfileImage/@Model[1].ProfileImage" alt="" style="width:150px">
+                        <div class="media-body align-self-center mr-2">
+                            <h4 class="mt-0">@Model[1].Name</h4>
+                            @*<p class="text-muted">
+                                @Html.Raw(Model[1].Bio.Length > 70 ? Model[1].Bio.Substring(0, 70) + "..." : Model[1].Bio)
+                            </p>*@
+                            <span class="text-muted text-right mt-1 float-right">@Model[1].PageGroup.GroupTitle</span>
+                            <span class="float-left mt-1 text-muted"><i class="fa fa-eye text-muted" aria-hidden="true"></i> @Model[1].Visit</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-6 travel-right">
+                <a href="/page/@Model[2].PageID">
+                    <div class="single-travel media pb-70">
+                        <img class="img-fluid d-flex  mr-3" src="~/ProfileImage/@Model[2].ProfileImage" alt="" style="width:150px">
+                        <div class="media-body align-self-center mr-2">
+                            <h4 class="mt-0">@Model[2].Name</h4>
+                            @*<p class="text-muted">
+                                @Html.Raw(Model[2].Bio.Length > 70 ? Model[2].Bio.Substring(0, 70) + "..." : Model[2].Bio)
+                            </p>*@
+                            <span class="text-muted text-right mt-1 float-right">@Model[2].PageGroup.GroupTitle</span>
+                            <span class="float-left mt-1 text-muted"><i class="fa fa-eye text-muted" aria-hidden="true"></i> @Model[2].Visit</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/page/@Model[3].PageID">
+                    <div class="single-travel media">
+                        <img class="img-fluid d-flex  mr-3" src="~/ProfileImage/@Model[3].ProfileImage" alt="" style="width:150px">
+                        <div class="media-body align-self-center mr-2">
+                            <h4 class="mt-0">@Model[3].Name</h4>
+                            @*<p class="text-muted">
+                                @Html.Raw(Model[3].Bio.Length > 70 ? Model[3].Bio.Substring(0, 70) + "..." : Model[3].Bio)
+                            </p>*@
+                            <span class="text-muted text-right mt-1 float-right">@Model[3].PageGroup.GroupTitle</span>
+                            <span class="float-left mt-1 text-muted"><i class="fa fa-eye text-muted" aria-hidden="true"></i> @Model[3].Visit</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

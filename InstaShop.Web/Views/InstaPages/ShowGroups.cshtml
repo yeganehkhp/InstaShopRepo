@@ -1,0 +1,13 @@
+﻿@model IEnumerable<InstaShop.DataLayer.ShowGroupViewModel>
+
+<div class="single_widget cat_widget">
+    <h4 class="text-uppercase pb-20">دسته بندی ها</h4>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="/Group/@item.GroupID/@item.GroupTitle/Page/1">@item.GroupTitle <span style="float:left"> @item.PageCount</span></a>
+            </li>
+        }
+    </ul>
+</div>

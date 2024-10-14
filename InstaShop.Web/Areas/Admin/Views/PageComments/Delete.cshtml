@@ -1,0 +1,82 @@
+﻿@model InstaShop.DataLayer.Models.PageComment
+
+@{
+    ViewBag.Title = "حذف نظر";
+}
+
+<h2>حذف نظر</h2>
+
+<h3>آیا از حذف نظر "@Model.Name" مطئن هستید؟</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Page.PageGroup.GroupTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Page.PageGroup.GroupTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Page.Name)
+        </dt>
+
+        <dd>
+            <a href="/Page/@Model.PageID" target="_blank">@Model.Page.Name</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowInPage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowInPage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Model.CreateDate.ToShamsiDateTime()
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" />
+            <a class="btn btn-default btn-sm" href="/Admin/PageComments/">
+                <i class="glyphicon glyphicon-backward"></i>
+            </a>
+        </div>
+    }
+</div>

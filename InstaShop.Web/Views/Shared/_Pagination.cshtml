@@ -1,0 +1,42 @@
+﻿<ul class="pagination">
+    @{
+        int pageId = Convert.ToInt32(ViewBag.PageID);
+        int prePageId = pageId - 1;
+        int nextPageId = pageId + 1;
+        int pre10PageId = pageId - 10;
+        int next10PageId = pageId + 10;
+        int pageCount = ViewBag.PageCount + 1;
+
+        if (pageCount > 1)
+        {
+            if (pageId != 1)
+            {
+                <li><a href="@ViewBag.PagingRout/1">ابتدا</a></li>
+
+                if (pre10PageId > 1)
+                {
+                    <li><a href="@ViewBag.PagingRout/@pre10PageId">@pre10PageId</a></li>
+                }
+
+                <li><a aria-label="Previous" href="@ViewBag.PagingRout/@prePageId"><span aria-hidden="true">«</span></a></li>
+                <li><a href="@ViewBag.PagingRout/@prePageId">@prePageId</a></li>
+            }
+
+            <li class="active"><a href="@ViewBag.PagingRout/@pageId">@pageId</a></li>
+
+            if (pageId != pageCount)
+            {
+                <li><a href="@ViewBag.PagingRout/@nextPageId">@nextPageId</a></li>
+                <li><a aria-label="Next" href="@ViewBag.PagingRout/@nextPageId"><span aria-hidden="true">»</span></a></li>
+
+                if (next10PageId < pageCount)
+                {
+                    <li><a href="@ViewBag.PagingRout/@next10PageId">@next10PageId</a></li>
+                }
+
+                <li><a href="@ViewBag.PagingRout/@pageCount">انتها</a></li>
+            }
+        }
+    }
+</ul>
+

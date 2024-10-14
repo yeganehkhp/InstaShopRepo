@@ -1,0 +1,73 @@
+﻿@model InstaShop.DataLayer.Models.PageComment
+
+@{
+    ViewBag.Title = "ویرایش نظر";
+}
+
+<h2>ویرایش نظر</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CommentID)
+        @Html.HiddenFor(model => model.PageID)
+        @Html.HiddenFor(model => model.Name)
+        @Html.HiddenFor(model => model.Email)
+        @Html.HiddenFor(model => model.CreateDate)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label for="@Model.Name">@Model.Name</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label for="@Model.Email">@Model.Email</label>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreateDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label for="@Model.CreateDate">@Model.CreateDate.ToShamsiDateTime()</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShowInPage, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.ShowInPage)
+                    @Html.ValidationMessageFor(model => model.ShowInPage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ویرایش" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a class="btn btn-default btn-sm" href="/Admin/PageComments/">
+        <i class="glyphicon glyphicon-backward"></i>
+    </a>
+</div>

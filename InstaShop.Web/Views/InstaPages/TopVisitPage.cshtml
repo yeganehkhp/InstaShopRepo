@@ -1,0 +1,15 @@
+﻿@model InstaShop.DataLayer.Models.Page
+
+<div class="single_widget about_widget">
+    <a href="/Page/@Model.PageID">
+        <img src="~/ProfileImage/@Model.ProfileImage" alt="" style="width:150px">
+        <h2 class="text-uppercase">@Model.Name</h2>
+        @*<p class="text-muted">
+            @Html.Raw(Model.Bio.Length > 70 ? Model.Bio.Substring(0, 70) + "..." : Model.Bio)
+        </p>*@
+        <div class="social-link">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+            <span class="text-muted">@Model.Visit</span>
+        </div>
+    </a>
+</div>

@@ -1,0 +1,29 @@
+﻿@model InstaShop.DataLayer.Models.PageGroup
+
+@{
+    ViewBag.Title = "جزئیات گروه";
+}
+
+<h2>جزئیات گروه</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupTitle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a class="btn btn-warning btn-sm" href="/Admin/PageGroups/Edit/@Model.GroupID">
+        <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-default btn-sm" href="/Admin/PageGroups/">
+        <i class="glyphicon glyphicon-backward"></i>
+    </a>
+</p>

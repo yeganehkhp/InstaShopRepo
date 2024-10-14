@@ -1,0 +1,59 @@
+﻿@model IEnumerable<InstaShop.DataLayer.Models.Page>
+@{
+    ViewBag.Title = "ShowGroupsByGroupId";
+}
+@section Styles
+    {
+    <link rel="stylesheet" href="/Content/css/bootstrap-rtl.css">
+}
+
+<div class="post-wrapper pt-100">
+    <!-- Start post Area -->
+
+    <section class="post-area mb-50">
+        <div class="container">
+            <div class="mb-50">
+                <h5>دسته بندی / @ViewBag.name</h5>
+            </div>
+            <div class="row justify-content-center d-flex">
+                <div class="col-lg-8">
+                    <div class="post-lists search-list">
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="single-list flex-row d-flex">
+                                <a href="/page/@item.PageID">
+                                    <div class="thumb">
+                                        <img src="~/ProfileImage/@item.ProfileImage" alt="@item.Name" style="width:150px">
+                                    </div>
+                                    <div class="detail mr-2">
+                                        <h4 class="pb-20">
+                                            @item.Name
+                                        </h4>
+                                        @*<p class="text-muted">
+                                            @Html.Raw(item.Bio.Length > 70 ? item.Bio.Substring(0, 70) + "..." : item.Bio)
+                                        </p>*@
+                                        <p class="footer pt-2">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                            <a>@item.Visit </a>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
+                        @Html.Partial("_Pagination")
+                    </div>
+                </div>
+                <div class="col-lg-4 sidebar-area">
+                    @Html.Action("Search", "InstaPages")
+                    @Html.Action("TopVisitPage", "InstaPages")
+                    @Html.Action("ShowGroups", "InstaPages")
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End post Area -->
+</div>
+
+

@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- start banner Area -->
+<section class="banner-area relative" id="home" data-parallax="scroll" data-image-src="/Content/img/pic.png" dir="rtl">
+    <div class="overlay-bg overlay"></div>
+    <div class="container">
+        <div class="row fullscreen">
+            <div class="banner-content d-flex align-items-center col-lg-12 col-md-12">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center d-flex">
+                        <div class="col-lg-8">
+                            <form action="/Search">
+                                <div id="imaginary_container">
+                                    <div class="input-group stylish-input-group">
+                                        <input type="text" name="q" class="form-control" placeholder="دنبال چه چیزی هستی..."
+                                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'دنبال چه چیزی هستی... '"
+                                               required="">
+                                        <span class="input-group-addon">
+                                            <button type="submit">
+                                                <span class="lnr lnr-magnifier"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                            <p class="mt-20 text-center text-white">جستجو میان هزاران صفحات اینستاگرامی</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- End banner Area -->
+<!-- Start category Area -->
+@Html.Action("Slider")
+<!-- End category Area -->
+<!-- Start travel Area -->
+@Html.Action("TopPages", "InstaPages")
+<!-- End travel Area -->
+<!-- Start fashion Area -->
+@Html.Action("LatestPages","InstaPages")
+<!-- End fashion Area -->
